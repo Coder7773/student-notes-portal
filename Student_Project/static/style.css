@@ -1,0 +1,222 @@
+/* --- Global Reset & Professional Fonts --- */
+:root {
+    --primary-color: #0f172a;    /* Deep Slate/Navy (Old Money Corporate Vibe) */
+    --secondary-color: #1e293b;  /* Lighter Slate */
+    --accent-color: #2563eb;     /* Professional Blue */
+    --success-color: #10b981;    /* Clean Emerald Green */
+    --bg-color: #f8fafc;         /* Ultra-light grayish blue background */
+    --text-color: #334155;       /* Soft Dark Text */
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Container Layout --- */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+/* --- Navigation Bar --- */
+.nav {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.nav span {
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+.nav a {
+    color: #93c5fd;
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.nav a:hover {
+    color: #ffffff;
+}
+
+/* --- Typography & Headings --- */
+h2 {
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+h3 {
+    color: var(--secondary-color);
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #e2e8f0;
+    margin: 35px 0;
+}
+
+/* --- Forms & Professional Inputs --- */
+input[type="text"], input[type="password"], input[type="file"], select {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 8px 0 20px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background-color: #f1f5f9;
+    transition: all 0.2s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgb(37 99 235 / 0.1);
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+/* --- Buttons --- */
+button {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* --- Side-by-Side Auth Split Screen --- */
+.form-box {
+    display: inline-block;
+    width: 46%;
+    vertical-align: top;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    box-sizing: border-box;
+}
+
+.form-box:first-child {
+    margin-right: 7%;
+}
+
+@media (max-width: 768px) {
+    .form-box { width: 100%; margin-right: 0 !important; margin-bottom: 20px; }
+}
+
+/* --- Sleek Tables for Notes Repository --- */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+th, td {
+    padding: 16px;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f8fafc;
+    color: var(--secondary-color);
+    font-weight: 600;
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+td {
+    border-bottom: 1px solid #e2e8f0;
+    background-color: #ffffff;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background-color: #f1f5f9;
+}
+
+.download-btn {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+}
+
+.download-btn:hover {
+    text-decoration: underline;
+    color: #1d4ed8;
+}
+
+/* --- Forum / Query Cards --- */
+.query-card {
+    background: #ffffff;
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    border-left: 6px solid var(--accent-color);
+    margin: 20px 0;
+    border-radius: 4px 8px 8px 4px;
+}
+
+.query-card p {
+    margin: 8px 0;
+}
+
+.query-card small {
+    color: #64748b;
+    font-size: 12px;
+}

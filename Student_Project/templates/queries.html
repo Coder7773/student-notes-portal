@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubt Forum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="nav">
+        <a href="/dashboard">Back to Dashboard</a> | 
+        <a href="/logout" style="color: #ff6b6b;">Logout</a>
+    </div>
+    
+    <div class="container">
+        {% if role == 'Student' %}
+        <h2>Ask a Doubt / Query to Teachers</h2>
+        <form action="/queries" method="POST" style="display: flex; gap: 15px; align-items: center; margin-bottom: 20px;">
+            <input type="text" name="question" placeholder="Type your doubt here (e.g., Python Unit 3 loop issue)..." required style="margin: 0; flex-grow: 1;">
+            <button type="submit" style="white-space: nowrap;">Post Query</button>
+        </form>
+        <hr>
+        {% endif %}
+
+        <h2 style="margin-top: 30px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">💬 All Queries & Resolutions</h2>
+        
+        {% if queries %}
+            {% for query in queries %}
+            <div class="query-card">
+                <p style="font-size: 16px; color: #0f172a;">
+                    <b>❓ Doubt:</b> {{ query.question }}
+                </p>
+                <p style="margin-top: -5px; margin-bottom: 15px;">
+                    <small>Asked by Student: <b>{{ query.asked_by }}</b></small>
+                </p>
+                
+                <div style="background: #f8fafc; padding: 15px; border-radius: 6px; border: 1px dashed #e2e8f0;">
+                    <p style="color: #10b981; margin: 0; font-weight: 600;">
+                        <b>✅ Official Resolution:</b> {{ query.answer }}
+                    </p>
+                    <p style="margin: 5px 0 0 0;">
+                        <small>Resolved by: <b>{{ query.answered_by }}</b></small>
+                    </p>
+                </div>
+                
+                {% if role == 'Teacher' %}
+                <form action="/answer/{{ query._id }}" method="POST" style="display: flex; gap: 10px; margin-top: 20px; align-items: center;">
+                    <input type="text" name="answer" placeholder="Provide official resolution..." required style="margin: 0; flex-grow: 1; padding: 8px 12px; font-size: 13px;">
+                    <button type="submit" style="background-color: #ffc107; color: #0f172a; padding: 8px 20px; font-size: 13px;">Submit Answer</button>
+                </form>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center; color: #64748b; margin-top: 30px;">Abhi tak koi doubts nahi pooche gaye hain.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

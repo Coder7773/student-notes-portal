@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Note Sharing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 450px;">
+        <h2>Sign In / Login</h2>
+        <hr>
+        <form action="/login" method="POST">
+            <label>Username or Gmail ID:</label>
+            <input type="text" name="login_input" placeholder="Enter Username or Email" required>
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="Enter Password" required>
+            <button type="submit" style="width: 100%;">Login</button>
+        </form>
+        <p style="text-align: center; margin-top: 20px;">
+            Naye ho? <a href="/signup_page">Naya Account Banaao</a>
+        </p>
+    </div>
+</body>
+</html>

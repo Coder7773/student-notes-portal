@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 500px;">
+        <h2>New Registration / Signup</h2>
+        <hr>
+        <form action="/signup" method="POST">
+            <label>Full Name:</label>
+            <input type="text" name="full_name" placeholder="Enter Full Name" required>
+            
+            <label>Choose Unique Username:</label>
+            <input type="text" name="username" placeholder="Choose Username" required>
+            
+            <label>Official Gmail ID (For OTP):</label>
+            <input type="text" name="gmail" placeholder="example@gmail.com" required>
+            
+            <label>Password:</label>
+            <input type="password" name="password" placeholder="Create Password" required>
+            
+            <label>Select System Role:</label>
+            <select name="role">
+                <option value="Student">Student</option>
+                <option value="Teacher">Teacher (Faculty)</option>
+            </select>
+            
+            <button type="submit" style="width: 100%; background-color: #2563eb;">Send Verification OTP</button>
+        </form>
+        <p style="text-align: center; margin-top: 20px;">
+            Pehle se account hai? <a href="/">Login Karein</a>
+        </p>
+    </div>
+</body>
+</html>

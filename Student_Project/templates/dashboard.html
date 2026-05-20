@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Notes Repository</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="nav">
+        <span>Logged in as: <b>{{ username }}</b> (<i>{{ role }}</i>)</span>
+        <a href="/queries">Doubt Forum</a> | 
+        <a href="/logout" style="color: #ff6b6b;">Logout</a>
+    </div>
+    
+    <div class="container">
+        {% if role == 'Teacher' %}
+        <h2>Upload Study Notes (Teachers Only)</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <label>Topic Name:</label>
+            <input type="text" name="title" placeholder="e.g., Unit 1: Introduction" required>
+            
+            <label>Subject Name:</label>
+            <input type="text" name="subject" placeholder="e.g., Python, OS, Java" required>
+            
+            <label>Select PDF Document:</label>
+            <input type="file" name="file" accept=".pdf" required>
+            
+            <button type="submit">Upload Document</button>
+        </form>
+        <hr>
+        {% endif %}
+
+        <h2>Search Notes</h2>
+        <form action="/dashboard" method="GET">
+            <input type="text" name="search" placeholder="Search by subject or title...">
+            <button type="submit" style="background-color: #2563eb;">Search</button>
+        </form>
+
+        <h2 style="margin-top: 40px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">📚 Available Notes Repository</h2>
+
+        {% if notes %}
+            {% set displayed_subjects = [] %}
+            
+            {% for note in notes %}
+                {% if note.subject not in displayed_subjects %}
+                    <h3 style="color: #2563eb; background: #eff6ff; padding: 10px 15px; border-radius: 6px; margin-top: 25px;">
+                        📘 Subject: {{ note.subject }}
+                    </h3>
+                    
+                    <table>
+                        <tr>
+                            <th style="width: 40%;">Topic Title</th>
+                            <th style="width: 35%;">Uploaded Faculty</th>
+                            <th style="width: 25%;">Action</th>
+                        </tr>
+                        
+                        {% for sub_note in notes %}
+                            {% if sub_note.subject == note.subject %}
+                            <tr>
+                                <td><b>{{ sub_note.title }}</b></td>
+                                <td>Prof. {{ sub_note.uploaded_by }}</td>
+                                <td><a href="/download/{{ sub_note.filename }}" target="_blank" class="download-btn">📥 Download PDF</a></td>
+                            </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                    
+                    {% if displayed_subjects.append(note.subject) %}{% endif %}
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center; color: #64748b; margin-top: 30px;">Abhi tak koi notes upload nahi kiye gaye hain.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

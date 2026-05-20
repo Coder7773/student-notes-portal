@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container" style="max-width: 450px; text-align: center;">
+        <h2>Enter Verification Code</h2>
+        <p>Humne aapke email <b>{{ gmail }}</b> par ek 6-digit ka OTP bheja hai.</p>
+        <hr>
+        <form action="/verify_otp" method="POST">
+            <input type="text" name="otp" placeholder="Enter OTP" required style="text-align: center; font-size: 20px; letter-spacing: 5px;">
+            <button type="submit" style="width: 100%; background-color: #10b981;">Verify & Create Account</button>
+        </form>
+    </div>
+</body>
+</html>
